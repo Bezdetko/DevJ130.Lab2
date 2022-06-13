@@ -39,62 +39,6 @@ public class DbServer implements IDbService{
 * общей ошибки доступа к базе данных
 */
     
-//// v03    
-//    @Override
-//    public boolean addAuthor(Authors author) throws DocumentException {
-//        List<Authors> list = new ArrayList<>();
-//        Settings settings = new Settings();
-//        String sql;
-//        try (
-//                Connection connection = DriverManager.getConnection(
-//                        settings.getValue(Settings.URL),
-//                        settings.getValue(Settings.USER),
-//                        settings.getValue(Settings.PASSWORD))) {
-//            Statement stm = connection.createStatement();
-//            if (author.getAuthor_id() != 0 && (!author.getAuthor().trim().isEmpty() || author.getAuthor() != null) && (author.getNotes().trim().isEmpty() || author.getNotes() == null)) {
-//                ResultSet rs = stm.executeQuery("SELECT * FROM App.AUTHORS WHERE ID = " + author.getAuthor_id() + " OR FULLNAME = '" + author.getAuthor() + "'");
-//                System.out.println(stm.getResultSet().toString());
-//                if (stm.getResultSet() != null) throw new DocumentException("Поля объекта author заполнены неправильно. Автор с таким id (именем) уже существует");
-//                sql = "INSERT INTO APP.Authors (id, fullName, comments) VALUES (" + author.getAuthor_id() + ", '"+author.getAuthor()+"', NULL)";
-//                stm.executeUpdate(sql);
-//                if (stm.getUpdateCount() == -1) throw new DocumentException("Не удалось создать новую запись");
-//                return true;             
-//
-//                
-//            } else if (author.getAuthor_id() != 0 && (!author.getAuthor().trim().isEmpty() || author.getAuthor() != null) && (!author.getNotes().trim().isEmpty() || author.getNotes() != null)) {
-//                ResultSet rs = stm.executeQuery("SELECT * FROM App.AUTHORS WHERE ID = " + author.getAuthor_id() );//+ " OR FULLNAME = '" + author.getAuthor() + "'");
-//                System.out.println(rs.toString() + "sd");
-//                if (stm.getResultSet() != null) throw new DocumentException("Поля объекта author заполнены неправильно. Автор с таким id (именем) уже существует");
-//                sql = "INSERT INTO APP.Authors (id, fullName, comments) VALUES (" + author.getAuthor_id() + ", '"+author.getAuthor()+"', '"+author.getNotes()+"')";
-//                stm.executeUpdate(sql);
-//                if (stm.getUpdateCount() == -1) throw new DocumentException("Не удалось создать новую запись");
-//                    return true;
-//                
-//            } else if (author.getAuthor_id() == 0 && (!author.getAuthor().trim().isEmpty() || author.getAuthor() != null) && (!author.getNotes().trim().isEmpty() || author.getNotes() != null)) {
-//                ResultSet rs = stm.executeQuery("SELECT * FROM App.AUTHORS WHERE FULLNAME = '" + author.getAuthor() + "'");
-//                if (stm.getResultSet() == null) throw new DocumentException("поля объекта author заполнены неправильно, такой записи не существует.");
-//                sql = "UPDATE APP.Authors SET comments = '" + author.getNotes() + "' WHERE id = " + author.getAuthor_id();
-//                stm.executeUpdate(sql);
-//                if (stm.getUpdateCount() == -1) throw new DocumentException("Не обновить новую запись");
-//                return false;
-//
-//            } else if (author.getAuthor_id() != 0 && (author.getAuthor().trim().isEmpty() || author.getAuthor() == null) && (!author.getNotes().trim().isEmpty() || author.getNotes() != null)) {
-//                ResultSet rs = stm.executeQuery("SELECT * FROM App.AUTHORS WHERE ID =" + author.getAuthor_id() + " ");
-//                if (stm.getResultSet() == null) throw new DocumentException("поля объекта author заполнены неправильно, такой записи не существует.");
-//                sql = "UPDATE APP.Authors SET comments = '" + author.getNotes() + "' WHERE FULLNAME = '" + author.getAuthor() + "'";
-//                stm.executeUpdate(sql);
-//                if (stm.getUpdateCount() == -1) throw new DocumentException("Не обновить новую запись");
-//                return false;                
-//            }
-//            else throw new DocumentException("Поля заполнены неправильно");
-//
-//        } catch (SQLException ex) {
-//            throw new DocumentException("Cоединение не установлено " + ex.getMessage());
-//        }
-//
-//    }
-
-// v04   
     @Override
     public boolean addAuthor(Authors author) throws DocumentException {
         List<Authors> list = new ArrayList<>();
